@@ -40,11 +40,9 @@ main() {
 # Reads templates from @typhon-status-left / @typhon-status-right,
 # falling back to built-in defaults.
 interpolate_statusline() {
-  local style indicators copy_mode bg
+  local style indicators
   style=$(tmux show-option -gqv @_typhon-style)
   indicators=$(tmux show-option -gqv @_typhon-indicators)
-  copy_mode=$(tmux show-option -gqv @_typhon-copy)
-  bg=$(tmux show-option -gqv @_typhon-bg)
 
   local default_left default_right
   default_left=$(tmux show-option -gqv @_typhon-default-status-left)
@@ -56,13 +54,9 @@ interpolate_statusline() {
 
   left="${left//\#\{typhon_style\}/$style}"
   left="${left//\#\{typhon_indicators\}/$indicators}"
-  left="${left//\#\{typhon_copy\}/$copy_mode}"
-  left="${left//\#\{typhon_bg\}/$bg}"
 
   right="${right//\#\{typhon_style\}/$style}"
   right="${right//\#\{typhon_indicators\}/$indicators}"
-  right="${right//\#\{typhon_copy\}/$copy_mode}"
-  right="${right//\#\{typhon_bg\}/$bg}"
 
   tmux set-option -g status-left "$left"
   tmux set-option -g status-right "$right"
@@ -70,8 +64,6 @@ interpolate_statusline() {
   # Clean up internal options
   tmux set-option -gu @_typhon-style
   tmux set-option -gu @_typhon-indicators
-  tmux set-option -gu @_typhon-copy
-  tmux set-option -gu @_typhon-bg
   tmux set-option -gu @_typhon-default-status-left
   tmux set-option -gu @_typhon-default-status-right
 }
