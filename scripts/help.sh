@@ -170,11 +170,11 @@ main() {
 
   # Colors are defined before sourcing so help files can use them
   # in help_style entries (e.g. help_style[W]="${bold}${cyan}").
-  bold=$(  tput bold)
-  rst=$(   tput sgr0)
-  dim=$(   tput dim    2>/dev/null || echo "")
-  # shellcheck disable=SC2034  # sourced help files reference these
+  # shellcheck disable=SC2034
   {
+    bold=$(  tput bold)
+    rst=$(   tput sgr0)
+    dim=$(   tput dim    2>/dev/null || echo "")
     red=$(   tput setaf 1 2>/dev/null || echo "")
     green=$( tput setaf 2 2>/dev/null || echo "")
     yellow=$(tput setaf 3 2>/dev/null || echo "")
@@ -182,8 +182,8 @@ main() {
     purple=$(tput setaf 5 2>/dev/null || echo "")
     cyan=$(  tput setaf 6 2>/dev/null || echo "")
     white=$( tput setaf 7 2>/dev/null || echo "")
+    grey=$(  tput setaf 8 2>/dev/null || echo "")
   }
-  grey=$(  tput setaf 8 2>/dev/null || echo "")
 
   # Sourced in both phases (phase 1 for sizing, phase 2 for rendering).
   # The help files are 2-4 lines so the duplication is simpler than
