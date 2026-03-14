@@ -174,19 +174,15 @@ main() {
   rst=$(   tput sgr0)
   dim=$(   tput dim    2>/dev/null || echo "")
   # shellcheck disable=SC2034  # sourced help files reference these
-  red=$(   tput setaf 1 2>/dev/null || echo "")
-  # shellcheck disable=SC2034
-  green=$( tput setaf 2 2>/dev/null || echo "")
-  # shellcheck disable=SC2034
-  yellow=$(tput setaf 3 2>/dev/null || echo "")
-  # shellcheck disable=SC2034
-  blue=$(  tput setaf 4 2>/dev/null || echo "")
-  # shellcheck disable=SC2034
-  purple=$(tput setaf 5 2>/dev/null || echo "")
-  # shellcheck disable=SC2034
-  cyan=$(  tput setaf 6 2>/dev/null || echo "")
-  # shellcheck disable=SC2034
-  white=$( tput setaf 7 2>/dev/null || echo "")
+  {
+    red=$(   tput setaf 1 2>/dev/null || echo "")
+    green=$( tput setaf 2 2>/dev/null || echo "")
+    yellow=$(tput setaf 3 2>/dev/null || echo "")
+    blue=$(  tput setaf 4 2>/dev/null || echo "")
+    purple=$(tput setaf 5 2>/dev/null || echo "")
+    cyan=$(  tput setaf 6 2>/dev/null || echo "")
+    white=$( tput setaf 7 2>/dev/null || echo "")
+  }
   grey=$(  tput setaf 8 2>/dev/null || echo "")
 
   # Sourced in both phases (phase 1 for sizing, phase 2 for rendering).
